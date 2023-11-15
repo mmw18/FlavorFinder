@@ -1,0 +1,14 @@
+<div>
+    <h2>Find your flavor!</h2>
+</div>
+<div>
+    {{#if logged_in}}
+    <form id="flavor-form">
+        <label for="flavor-search">Enter a genre, diet, or dish:</label>
+        <input id="flavor-search" name="flavor-search">
+        <button id="restaurant-search">Dine Out!</button>
+        <button id="recipe-search">Dine In!</button>
+    </form>
+    {{#else}}
+    {{/if}}
+</div>
