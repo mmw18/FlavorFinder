@@ -1,0 +1,25 @@
+<form id="recipe-form" action="/results" method="get">
+    <select name="cuisineType" id="cuisineType">
+        <option value="American">American</option>
+        <option value="Italian">Italian</option>
+    </select>
+    <button id='recipe-button' type="submit">Search</button>
+</form>
+
+{{!-- 
+
+1. create javascript file to make fetch request to get recipes at /recipes
+2. in express, in router.get/recipes , we will need to call the recipes api and return back json
+3. once we get back the front end data, we will need to build the recipes
+
+ --}}
+ 
+{{#if recipes}}
+    <div id="results">
+        {{#each recipes}}
+            <div>{{this.recipe.label}}</div>
+        {{/each}}
+    </div>
+{{/if}}
+
+<script src="./js/recipes.js"></script>
