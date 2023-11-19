@@ -7,8 +7,8 @@ const recipeRoutes = require('./controllers/api/recipes');
 const homeRoutes = require('./controllers/routes/home-routes');
 const userRoutes = require('./controllers/routes/user-routes');
 const exphbs = require('express-handlebars');
-const { truncate } = require('./models/User');
-const { Sequelize } = require('sequelize');
+// const { truncate } = require('./models/User');
+// const { Sequelize } = require('sequelize');
 
 
 
