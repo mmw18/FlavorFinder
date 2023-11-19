@@ -11,7 +11,7 @@ router.get('/recipes', (req,res) => {
 })
 
 const fetchRecipesByCuisine = async (cuisineType) => {
-    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType[0]=${cuisineType}`;
+    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType=${cuisineType}&random=true&field=label&field=uri&field=image`;
     const options = {
         method: 'GET',
         headers: {
@@ -26,7 +26,7 @@ const fetchRecipesByCuisine = async (cuisineType) => {
         const result = await response.json();
 
         if (result && result.hits) {
-            return result.hits.slice(0, 5); 
+            return result.hits.slice(0, 10); 
         }
         return [];
     } catch (error) {

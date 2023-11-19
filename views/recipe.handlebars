@@ -1,13 +1,3 @@
-
-
-{{!-- 
-
-1. create javascript file to make fetch request to get recipes at /recipes
-2. in express, in router.get/recipes , we will need to call the recipes api and return back json
-3. once we get back the front end data, we will need to build the recipes
-
- --}}
- 
 {{#if recipes}}
     <div id="results">
         {{#each recipes}}
@@ -17,3 +7,12 @@
 {{/if}}
 
 <script src="./js/recipes.js"></script>
+
+{{!-- 
+
+1. create javascript file to make fetch request to get recipes at /recipes
+2. in express, in router.get/recipes , we will need to call the recipes api and return back json
+3. once we get back the front end data, we will need to build the recipes
+
+ --}}
+ 

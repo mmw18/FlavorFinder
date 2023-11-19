@@ -22,9 +22,15 @@
                 {{/if}}
             </nav>
         </header>
+
+
+ {{!-- {{#if logged_in}} --}}
         <main>
             {{{ body }}}
         </main>
+{{!-- {{else}} --}}
+<p> You're not logged in.</p>
+{{!-- {{/if}} --}}
         <footer>
 
         </footer>

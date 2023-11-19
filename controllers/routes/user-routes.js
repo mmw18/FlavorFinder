@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('../../models/');
+const { User } = require('../../models/');
 //create route handler to return login view
 //create post request handler to allow user to login
     //check user crendial in database
@@ -25,5 +25,6 @@ router.post('/login', async (req,res) => {
       console.log('User found');     
     }
 })
+
 
 module.exports = router;

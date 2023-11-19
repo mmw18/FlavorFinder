@@ -10,8 +10,6 @@ const exphbs = require('express-handlebars');
 // const { truncate } = require('./models/User');
 // const { Sequelize } = require('sequelize');
 
-
-
 const app = express();
 const hbs = exphbs.create({ });
 app.use(session({
@@ -30,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', recipeRoutes);
 app.use('/', homeRoutes);
 app.use('/', userRoutes);
+
+
 
 
 
