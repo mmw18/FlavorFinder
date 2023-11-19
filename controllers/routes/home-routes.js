@@ -2,7 +2,7 @@ const router = require('express').Router();
 // render the recipes home page (grabbing the recipe.handlebar)
 router.get('/', (req,res) => {
     console.log("call root path");
-    res.render('homepage');
+    res.render('login');
 })
 
 module.exports = router;

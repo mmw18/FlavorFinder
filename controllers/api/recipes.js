@@ -2,16 +2,36 @@
 const router = require('express').Router();
 require('dotenv').config();
 
+
 const API_KEY = process.env.API_KEY;
 
 // Needing to return information from the API database for recipes
 
 // Recipes endpoint to fetch recipes from API
-router.get('/recipes', (req,res) => {
-    res.json({
-        name: "pizza"
-       });
-})
+// router.get('/recipes', (req,res) => {
+
+//     console.log("Fetching function for API running...")
+//     res.json({
+//         name: "pizza"
+//        });
+// })
+
+router.get('/recipes', async (req, res) => {
+    // console.log("Fetching function for API running...")
+    // Example: Getting the cuisine type from a query string
+    const cuisineType = req.query.cuisine; // Assuming the URL is something like "/recipes?cuisine=Italian"
+
+    try {
+        const recipes = await fetchRecipesByCuisine(cuisineType);
+        console.log(recipes);
+        console.log(API_KEY)
+        // Further processing or sending the response
+        res.json(recipes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching recipes');
+    }
+});
 
 const fetchRecipesByCuisine = async (cuisineType) => {
     const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType=${cuisineType}&random=true&field=label&field=uri&field=image`;
@@ -25,6 +45,7 @@ const fetchRecipesByCuisine = async (cuisineType) => {
     };
 
     try {
+        // console.log("Fetching function for API running...")
         const response = await fetch(url, options);
         const result = await response.json();
 
