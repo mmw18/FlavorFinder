@@ -1,5 +1,8 @@
 // const express = require('express');
 const router = require('express').Router();
+require('dotenv').config();
+
+const API_KEY = process.env.API_KEY;
 
 // Needing to return information from the API database for recipes
 
@@ -16,7 +19,7 @@ const fetchRecipesByCuisine = async (cuisineType) => {
         method: 'GET',
         headers: {
             'Accept-Language': 'en',
-            'X-RapidAPI-Key': '3789202d04mshe307a1aa7bcf028p1ab38cjsn3b66ac280db4',
+            'X-RapidAPI-Key': API_KEY,
             'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
         }
     };
