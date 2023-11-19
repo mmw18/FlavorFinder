@@ -7,14 +7,6 @@ recipeForm.addEventListener('submit', (event) => {
        const selectedCuisine = document.getElementById('cuisineType').value;
        console.log("Selected Cuisine:", selectedCuisine);
 
-
-    // fetch('/recipes').then(function (response) {
-    //     return response.json();
-    // }).then((recipeData) => {
-    //     console.log("Fetching function for API running...")
-    //     console.log('Recipe Data', recipeData);
-    // })
-
     fetch(`/recipes?cuisine=${selectedCuisine}`).then(function (response) {
         return response.json();
     }).then((recipeData) => {

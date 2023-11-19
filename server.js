@@ -3,7 +3,8 @@ const express = require('express');
 const sequelize = require('./config/connection');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const recipeRoutes = require('./controllers/api/recipes');
+const recipeAPI = require('./controllers/api/recipes');
+const recipeRoutes = require('./controllers/routes/recipe-routes');
 const homeRoutes = require('./controllers/routes/home-routes');
 const userRoutes = require('./controllers/routes/user-routes');
 const exphbs = require('express-handlebars');
@@ -24,6 +25,8 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', recipeAPI);
 
 app.use('/', recipeRoutes);
 app.use('/', homeRoutes);
