@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlavorFinder</title>
+</head>
+
+<body>
+    <div>
+        <header>
+            <nav>
+                {{!-- <p> -- NAVIGATION BAR GOES HERE -- </p> --}}
+                {{!-- {{#if logged_in}}
+                <a href="/favorites">Favorites</a>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}} --}}
+            </nav>
+        </header>
+
+        <main>
+            <div>
+    <h2>Find your flavor!</h2>
+</div>
+ 
+<form id="recipe-form" action="/results" method="get">
+    <select name="cuisineType" id="cuisineType">
+        <option value="American">American</option>
+        <option value="Italian">Italian</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Indian">Indian</option>
+        <option value="Korean">Korean</option>
+        <option value="Greek">Greek</option>
+        <option value="Vietnamese">Vietnamese</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Mexican">Mexican</option>
+    </select>
+    <button id='recipe-button' type="submit">Search</button>
+</form>
+
+<script src="./js/recipes.js"></script>
+
+</div>
+
+        </main>
+
+
+        <footer>
+
+        </footer>
+    </div>
+</body>
+
+
+</html>
+
