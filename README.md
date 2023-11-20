@@ -1,25 +1,14 @@
-<!-- 
-Public
-     Index will be landing page, and assets will contain the images and suck we are using
+# FlavorFinder
 
-/views 
-    this can be where handlebars are 
+## Description
 
-/models
-    sequalize models that will represent our data
+FlavorFinder is a web application that allows users to discover restaurants based on their preferred cuisine. The application utilizes an API to fetch restaurant data and showcases it on the webpage. Users can select their desired cuisine type to view a curated list of restaurants.
 
-/routes
-    express.js routes for handling the definitions of api's we will use
+## Screenshot
 
-/controllers
-    Logic here for handling the requests (interacting with the models)
+![Placeholder for Screenshot](screenshot.png)
+*(Replace this with an actual screenshot of your application)*
 
-/config
-    all the configuration files (db configurtation)
+## Deployment
 
-/middleware
-    middleware for user authentification
-
-/utils
-    utility functions and helper code
- -->
+The application is deployed and accessible online. You can visit it by clicking the following link: [FlavorFinder App](https://your-deployed-app-link.com)
