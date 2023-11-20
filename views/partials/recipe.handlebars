@@ -1,11 +1,29 @@
+
 {{#if recipes}}
+    <div class="row">
+        {{#each recipes}}
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h5>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
+
+
+
+{{!-- {{#if recipes}}
     <div id="results">
         {{#each recipes}}
              <h3><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h3>
         <img src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
         {{/each}}
     </div>
-{{/if}}
+{{/if}} --}}
 
 
 

@@ -1,7 +1,8 @@
 <h2>Find your flavor!</h2>
-     
-    <form id="recipe-form" action="/view-recipes" method="get">
-        <select name="cuisineType" id="cuisineType">
+
+<form id="recipe-form" action="/view-recipes" method="get" class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+        <select name="cuisineType" id="cuisineType" class="form-control">
             <option value="" disabled selected>Select</option>
             <option value="American">American</option>
             <option value="Italian">Italian</option>
@@ -13,9 +14,10 @@
             <option value="Japanese">Japanese</option>
             <option value="Mexican">Mexican</option>
         </select>
-        <button id='recipe-button' type="submit">Search</button>
-    </form>
+    </div>
+    <button id='recipe-button' type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
 
-        <div id="recipes-container">
-            {{> recipe }}
-        </div>
+<div id="recipes-container">
+    {{> recipe }}
+</div>
