@@ -1,7 +1,7 @@
 // const express = require('express');
 const router = require('express').Router();
 require('dotenv').config();
-
+const fetch = require('node-fetch');
 
 const API_KEY = process.env.API_KEY;
 
@@ -34,7 +34,7 @@ router.get('/recipes', async (req, res) => {
 });
 
 const fetchRecipesByCuisine = async (cuisineType) => {
-    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType=${cuisineType}&random=true&field=label&field=uri&field=image`;
+    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType=${cuisineType}&random=true&field=label&field=url&field=image`;
     const options = {
         method: 'GET',
         headers: {
@@ -75,4 +75,3 @@ router.get('/results', async (req, res) => {
 });
 
 module.exports = router;
-// module.exports = { fetchRecipesByCuisine };

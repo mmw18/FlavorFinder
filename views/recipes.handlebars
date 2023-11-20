@@ -16,6 +16,13 @@
         <button id='recipe-button' type="submit">Search</button>
     </form>
 
-        <div id="recipes-container">
-            {{> recipe }}
-        </div>
+{{#if recipes}}
+    <div id="results">
+        {{#each recipes}}
+             <h3><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h3>
+        <img src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
+        {{/each}}
+    </div>
+{{/if}}
+
+ 

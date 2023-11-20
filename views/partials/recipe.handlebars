@@ -1,12 +1,13 @@
 {{#if recipes}}
     <div id="results">
         {{#each recipes}}
-            <div>{{this.recipe.label}}</div>
+             <h3><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h3>
+        <img src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
         {{/each}}
     </div>
 {{/if}}
 
-<script src="./js/recipes.js"></script>
+
 
 {{!-- 
 
@@ -15,4 +16,3 @@
 3. once we get back the front end data, we will need to build the recipes
 
  --}}
- 

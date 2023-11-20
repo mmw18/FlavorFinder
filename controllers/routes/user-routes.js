@@ -51,35 +51,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-
-// router.post('/login', async (req, res) => {
-//   try {
-//       // Check if user exists with the provided email
-//       const user = await User.findOne({ where: { email: req.body.email } });
-
-//       if (!user) {
-//           // If user not found, send an appropriate response
-//           res.status(401).send('Login failed.');
-//       } else {
-//           // User found, now check the password
-//           const validPassword = user.checkPassword(req.body.password);
-
-//           if (validPassword) {
-//               console.log('Login successful');
-//               // Handle successful login here (e.g., creating a session)
-//               res.json({ success: true, message: 'Login successful' });
-//               // res.send('Login successful');
-//           } else {
-//               // If password does not match, send an appropriate response
-//               res.status(401).send('Login failed.');
-//           }
-//       }
-//   } catch (error) {
-//       console.error('Error during login:', error);
-//       res.status(500).send('Server error during login');
-//   }
-// });
-
 router.get('/authenticated', (req, res) => {
   // Ensure the user is authenticated
   if (req.isAuthenticated()) { // or your authentication check

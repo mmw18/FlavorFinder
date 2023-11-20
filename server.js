@@ -11,11 +11,17 @@ const exphbs = require('express-handlebars');
 const passport = require('passport');
 // Initialize Express
 const app = express();
+const fs = require('fs');
+
 
 // Set up Handlebars
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    partialsDir: path.join(__dirname, 'views/partials')
+});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+
 
 // Passport Config (Make sure this is after defining the app variable)
 require('./config/passport-config')(passport);
