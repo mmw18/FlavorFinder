@@ -1,26 +1,18 @@
 <div>
     <h2>Find your flavor!</h2>
 </div>
-{{!-- Form for W --}}
-{{!-- <div>
-    <title>
-        {{#if logged_in}}
-        <form id="flavor-form">
-            <label for="flavor-search">Enter a genre, diet, or dish:</label>
-            <input id="flavor-search" name="flavor-search">
-            <button id="restaurant-search">Dine Out!</button>
-            <button id="recipe-search">Dine In!</button>
-        </form>
-        {{else}}
-            NodeJS
-        {{/if}} --}}
-    {{!-- </title> --}}
-
-
+ 
 <form id="recipe-form" action="/results" method="get">
     <select name="cuisineType" id="cuisineType">
         <option value="American">American</option>
         <option value="Italian">Italian</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Indian">Indian</option>
+        <option value="Korean">Korean</option>
+        <option value="Greek">Greek</option>
+        <option value="Vietnamese">Vietnamese</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Mexican">Mexican</option>
     </select>
     <button id='recipe-button' type="submit">Search</button>
 </form>
@@ -28,3 +20,4 @@
 <script src="./js/recipes.js"></script>
 
 </div>
+

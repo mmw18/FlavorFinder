@@ -1,0 +1,28 @@
+<h2>Find your flavor!</h2>
+     
+    <form id="recipe-form" action="/view-recipes" method="get">
+        <select name="cuisineType" id="cuisineType">
+            <option value="" disabled selected>Select</option>
+            <option value="American">American</option>
+            <option value="Italian">Italian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Indian">Indian</option>
+            <option value="Korean">Korean</option>
+            <option value="Greek">Greek</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Mexican">Mexican</option>
+        </select>
+        <button id='recipe-button' type="submit">Search</button>
+    </form>
+
+{{#if recipes}}
+    <div id="results">
+        {{#each recipes}}
+             <h3><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h3>
+        <img src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
+        {{/each}}
+    </div>
+{{/if}}
+
+ 

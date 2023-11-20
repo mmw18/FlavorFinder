@@ -1,12 +1,17 @@
-console.log("front end recipe js file");
+document.addEventListener('DOMContentLoaded', () => {
+    const recipeForm = document.getElementById('recipe-form');
+    
+    recipeForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const selectedCuisine = document.getElementById('cuisineType').value;
 
-const recipeForm = document.getElementById('recipe-form')
+        if (!selectedCuisine) {
+            event.preventDefault();
+            alert('Please select an option');
+            return;
+        }
+        // Redirect to the /view-recipes route with the selected cuisine
+        window.location.href = `/view-recipes?cuisine=${selectedCuisine}`;
+    });
+});
 
-recipeForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    fetch('/recipes').then(function (response) {
-        return response.json();
-    }).then((recipeData) => {
-        console.log('Recipe Data', recipeData);
-    })
-})

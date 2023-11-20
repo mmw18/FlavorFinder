@@ -1,32 +1,56 @@
 // const express = require('express');
 const router = require('express').Router();
+require('dotenv').config();
+const fetch = require('node-fetch');
+
+const API_KEY = process.env.API_KEY;
 
 // Needing to return information from the API database for recipes
 
 // Recipes endpoint to fetch recipes from API
-router.get('/recipes', (req,res) => {
-    res.json({
-        name: "pizza"
-       });
-})
+// router.get('/recipes', (req,res) => {
+
+//     console.log("Fetching function for API running...")
+//     res.json({
+//         name: "pizza"
+//        });
+// })
+
+router.get('/recipes', async (req, res) => {
+    // console.log("Fetching function for API running...")
+    // Example: Getting the cuisine type from a query string
+    const cuisineType = req.query.cuisine; // Assuming the URL is something like "/recipes?cuisine=Italian"
+
+    try {
+        const recipes = await fetchRecipesByCuisine(cuisineType);
+        console.log(recipes);
+        console.log(API_KEY)
+        // Further processing or sending the response
+        res.json(recipes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching recipes');
+    }
+});
 
 const fetchRecipesByCuisine = async (cuisineType) => {
-    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType[0]=${cuisineType}`;
+    const url = `https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2?type=public&cuisineType=${cuisineType}&random=true&field=label&field=url&field=image`;
     const options = {
         method: 'GET',
         headers: {
             'Accept-Language': 'en',
-            'X-RapidAPI-Key': '3789202d04mshe307a1aa7bcf028p1ab38cjsn3b66ac280db4',
+            'X-RapidAPI-Key': API_KEY,
             'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
         }
     };
 
     try {
+        // console.log("Fetching function for API running...")
         const response = await fetch(url, options);
         const result = await response.json();
 
         if (result && result.hits) {
-            return result.hits.slice(0, 5); 
+            return result.hits.slice(0, 10); 
         }
         return [];
     } catch (error) {
@@ -51,4 +75,3 @@ router.get('/results', async (req, res) => {
 });
 
 module.exports = router;
-// module.exports = { fetchRecipesByCuisine };

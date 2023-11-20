@@ -1,0 +1,36 @@
+
+{{#if recipes}}
+    <div class="row">
+        {{#each recipes}}
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h5>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
+
+
+
+{{!-- {{#if recipes}}
+    <div id="results">
+        {{#each recipes}}
+             <h3><a href="{{this.recipe.url}}" target="_blank">{{this.recipe.label}}</a></h3>
+        <img src="{{this.recipe.image}}" alt="{{this.recipe.label}}">
+        {{/each}}
+    </div>
+{{/if}} --}}
+
+
+
+{{!-- 
+
+1. create javascript file to make fetch request to get recipes at /recipes
+2. in express, in router.get/recipes , we will need to call the recipes api and return back json
+3. once we get back the front end data, we will need to build the recipes
+
+ --}}
