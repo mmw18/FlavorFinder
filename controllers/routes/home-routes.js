@@ -2,10 +2,19 @@ const router = require('express').Router();
 // render the recipes home page (grabbing the recipe.handlebar)
 router.get('/', (req,res) => {
     console.log("call root path");
-    res.render('homepage');
+    res.render('homepage',{
+        logged_in: req.session.logged_in
+        //logged_in: false
+    })
 })
 
+
+
+
 module.exports = router;
+
+
+
 
 // const { Recipe, Restaurant, User } = require('../../models');
 

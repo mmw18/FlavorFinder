@@ -12,13 +12,16 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
+    // console.log(response);
+    const result = await response.json();
+    console.log(result);
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      //document.location.replace('/profile');
+      document.location.replace('/');
       console.log('user login');
     } else {
-      alert(response.statusText);
+      // alert('Please enter correct email and password.');
+      document.getElementById('error-msg').textContent = result.message;
     }
   }
 };
@@ -36,12 +39,21 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
+    const result = await response.json();
+    console.log(result);
     if (response.ok) {
-      document.location.replace('/profile');
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/');
+      console.log('user login');
     } else {
-      alert(response.statusText);
+      // alert('Please enter correct email and password.');
+      document.getElementById('error-msg').textContent = result.message;
     }
+    // if (response.ok) {
+    //   document.location.replace('/profile');
+    // } else {
+    //   alert(response.statusText);
+    // }
   }
 };
 
