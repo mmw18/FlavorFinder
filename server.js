@@ -43,6 +43,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bulma', express.static(__dirname + '/node_modules/bulma/css/'));
 
 // Route setup
 app.use('/', recipeAPI);
