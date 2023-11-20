@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="bulma/bulma.css">
   <title>FlavorFinder</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/public/css/style.css">
+
 </head>
 
 <body>
@@ -24,8 +27,10 @@
                 {{/if}}
             </nav>
         </header>
+
         <main>
             {{{ body }}}
+
         </main>
         <footer>
 
@@ -34,7 +39,7 @@
             <script src="/js/logout.js"> </script>
           {{/if}}
     </div>
+        <script src="./js/recipes.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 </body>
-
-
 </html>

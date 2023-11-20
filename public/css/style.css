@@ -1,0 +1,16 @@
+body {
+    background-color: #fff5e6; /* Light orange/cream */
+}
+
+.card {
+    border-color: #ffcc99; /* Soft brown */
+}
+
+.card-title a {
+    color: #cc3300; /* Rich red */
+}
+
+.btn-primary {
+    background-color: #4CAF50; /* Vibrant green */
+    border-color: #4CAF50;
+}

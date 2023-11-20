@@ -1,2 +1,9 @@
 DROP DATABASE IF EXISTS flavorfinder_db;
 CREATE DATABASE flavorfinder_db;
+
+CREATE TABLE Users (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    name NVARCHAR(255) NOT NULL,
+    email NVARCHAR(255) NOT NULL UNIQUE,
+    password NVARCHAR(255) NOT NULL
+);
