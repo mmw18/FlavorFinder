@@ -1,11 +1,6 @@
 body {
     background-color: #fff5e6; /* Light orange/cream */
 }
-
-.card {
-    border-color: #ffcc99; /* Soft brown */
-}
-
 .card-title a {
     color: #cc3300; /* Rich red */
 }
@@ -13,4 +8,22 @@ body {
 .btn-primary {
     background-color: #4CAF50; /* Vibrant green */
     border-color: #4CAF50;
+}
+.card {
+    border-color: #ffcc99; /* Soft brown */
+    height: 300px; /* Set a fixed height */
+    margin-bottom: 20px; /* Add some space at the bottom */
+}
+.card-img-top {
+    height: 140px; /* Adjust image height */
+    object-fit: cover; /* This makes sure the image covers the area nicely */
+}
+
+.card-body {
+    overflow: hidden; 
+}
+
+#recipe-container {
+    display: flex;
+    
 }
