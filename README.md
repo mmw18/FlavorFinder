@@ -1,25 +1,15 @@
-<!-- 
-Public
-     Index will be landing page, and assets will contain the images and suck we are using
+# FlavorFinder
 
-/views 
-    this can be where handlebars are 
+## Description
 
-/models
-    sequalize models that will represent our data
+FlavorFinder is a web application that allows users to discover recipes based on their preferred cuisine. The application utilizes an API to fetch recipe data and showcases it on the webpage. Users can select their desired cuisine type to view a curated list of recipes.
 
-/routes
-    express.js routes for handling the definitions of api's we will use
+## Screenshots
 
-/controllers
-    Logic here for handling the requests (interacting with the models)
+![Login screen](./public/assets/login-screenshot.png)
+![Recipe list with flavor finder search](./public/assets/recipes-screenshot.png)
 
-/config
-    all the configuration files (db configurtation)
 
-/middleware
-    middleware for user authentification
+## Deployment
 
-/utils
-    utility functions and helper code
- -->
+The application is deployed and accessible online. You can visit it by clicking the following link: [FlavorFinder App](https://dry-waters-69396-c33e43ba5835.herokuapp.com/)

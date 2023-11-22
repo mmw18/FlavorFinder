@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Search</title>
+  <!-- Include Handlebars and Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <h1>Restaurant Search</h1>
+
+  <label for="cuisine">Select Cuisine:</label>
+  <select id="cuisine">
+    <option value="italian">Italian</option>
+    <option value="asian">Asian</option>
+    <option value="american">American</option>
+    <option value="Romana">Romana</option>
+    <option value="seafood">seafood</option>
+
+    <!-- Add more cuisine options as needed -->
+  </select>
+
+  <button onclick="searchRestaurants()">Search</button>
+
+  <div id="results"></div>
+
+  <script id="restaurant-template" type="text/x-handlebars-template">
+    <h2>Restaurants</h2>
+    {{#each restaurants.data}}
+      {{#if (hasSelectedCuisine cuisine)}}
+        <div class="restaurant">
+          <h3>{{name}}</h3>
+          <p><strong>Rating:</strong> {{rating}}</p>
+          <p><strong>Price Level:</strong> {{price_level}}</p>
+          <p><strong>Address:</strong> {{address_obj.street1}}, {{address_obj.city}}, {{address_obj.state}} {{address_obj.postalcode}}</p>
+          <p><strong>Description:</strong> {{description}}</p>
+          <p><strong>Website:</strong> <a href="{{website}}" target="_blank">{{website}}</a></p>
+          <p><strong>Phone:</strong> {{phone}}</p>
+          <p><strong>Cuisine:</strong> {{#each cuisine}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}</p>
+          <hr>
+        </div>
+      {{/if}}
+    {{/each}}
+  </script>
+
+  <script>
+    Handlebars.registerHelper('hasSelectedCuisine', function (cuisineArray) {
+      const selectedCuisine = document.getElementById('cuisine').value;
+      return cuisineArray.some(cuisine => cuisine.name.toLowerCase() === selectedCuisine.toLowerCase());
+    });
+
+    async function searchRestaurants() {
+      const cuisineType = document.getElementById('cuisine').value;
+
+      const encodedParams = new URLSearchParams();
+      encodedParams.set('language', 'en_US');
+      encodedParams.set('location_id', '30196');
+      encodedParams.set('currency', 'USD');
+      encodedParams.set('offset', '0');
+      encodedParams.set('cuisine', cuisineType);
+
+      const options = {
+        method: 'POST',
+        url: 'https://worldwide-restaurants.p.rapidapi.com/search',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'X-RapidAPI-Key': '3a4fff60a7msh493f89f93fc3157p1ce5f3jsnc2fd77fd7a87',
+          'X-RapidAPI-Host': 'worldwide-restaurants.p.rapidapi.com'
+        },
+        data: encodedParams,
+      };
+
+      try {
+        const response = await axios.request(options);
+
+        const template = Handlebars.compile(document.getElementById('restaurant-template').innerHTML);
+        const html = template({ restaurants: response.data.results });
+
+        document.getElementById('results').innerHTML = html;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  </script>
+
+</body>
+</html>
