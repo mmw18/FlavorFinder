@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Document metadata -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurant Search</title>
-  <!-- Include Handlebars and Axios -->
+
+  <!-- Include Handlebars and Axios scripts -->
   <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
+  <!-- Page content -->
   <h1>Restaurant Search</h1>
 
+  <!-- Dropdown for selecting cuisine -->
   <label for="cuisine">Select Cuisine:</label>
   <select id="cuisine">
     <option value="italian">Italian</option>
     <option value="asian">Asian</option>
     <option value="american">American</option>
     <option value="Romana">Romana</option>
-    <option value="seafood">seafood</option>
-
+    <option value="seafood">Seafood</option>
     <!-- Add more cuisine options as needed -->
   </select>
 
+  <!-- Button to trigger restaurant search -->
   <button onclick="searchRestaurants()">Search</button>
 
+  <!-- Container for displaying search results -->
   <div id="results"></div>
 
+  <!-- Handlebars template for rendering restaurant data -->
   <script id="restaurant-template" type="text/x-handlebars-template">
     <h2>Restaurants</h2>
     {{#each restaurants.data}}
@@ -46,15 +52,19 @@
     {{/each}}
   </script>
 
+  <!-- JavaScript code for Handlebars helper and restaurant search -->
   <script>
+    // Handlebars helper to check if the cuisine matches the selected cuisine
     Handlebars.registerHelper('hasSelectedCuisine', function (cuisineArray) {
       const selectedCuisine = document.getElementById('cuisine').value;
       return cuisineArray.some(cuisine => cuisine.name.toLowerCase() === selectedCuisine.toLowerCase());
     });
 
+    // Function to fetch and display restaurant data based on selected cuisine
     async function searchRestaurants() {
       const cuisineType = document.getElementById('cuisine').value;
 
+      // Prepare parameters for the restaurant search API request
       const encodedParams = new URLSearchParams();
       encodedParams.set('language', 'en_US');
       encodedParams.set('location_id', '30196');
@@ -62,6 +72,7 @@
       encodedParams.set('offset', '0');
       encodedParams.set('cuisine', cuisineType);
 
+      // Configure options for the Axios request
       const options = {
         method: 'POST',
         url: 'https://worldwide-restaurants.p.rapidapi.com/search',
@@ -74,11 +85,14 @@
       };
 
       try {
+        // Send the Axios request and handle the response
         const response = await axios.request(options);
 
+        // Compile and render Handlebars template with restaurant data
         const template = Handlebars.compile(document.getElementById('restaurant-template').innerHTML);
         const html = template({ restaurants: response.data.results });
 
+        // Display the rendered HTML in the 'results' container
         document.getElementById('results').innerHTML = html;
       } catch (error) {
         console.error(error);
